@@ -13,13 +13,16 @@
     toggle.addEventListener('click', function () {
       toggle.classList.toggle('open');
       links.classList.toggle('open');
-      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+      var isOpen = links.classList.contains('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      header.classList.toggle('nav-open', isOpen);
     });
     links.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         toggle.classList.remove('open');
         links.classList.remove('open');
         document.body.style.overflow = '';
+        header.classList.remove('nav-open');
       });
     });
   }
